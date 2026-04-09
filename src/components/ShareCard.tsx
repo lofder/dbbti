@@ -12,6 +12,7 @@ interface ShareCardProps {
 
 const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({ type, scores, dimensions }, ref) => {
   const color = type.isHidden ? '#c084fc' : type.color
+  const overview = type.overview.length > 85 ? type.overview.slice(0, 85) + '…' : type.overview
 
   return (
     <div
@@ -23,7 +24,7 @@ const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({ type, scores, di
         color: '#eeeef0',
       }}
     >
-      {/* ═══ HERO ═══ */}
+      {/* ═══ HERO — 不动 ═══ */}
       <div style={{
         position: 'relative', width: '100%',
         paddingTop: 48, paddingBottom: 48,
@@ -74,51 +75,45 @@ const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({ type, scores, di
         </p>
       </div>
 
-      {/* ═══ BODY ═══ */}
-      <div style={{ padding: '0 44px 44px' }}>
+      {/* ═══ BODY — 压缩 ═══ */}
+      <div style={{ padding: '0 44px 32px' }}>
 
         <div style={{
           width: 48, height: 2, borderRadius: 1,
           background: `linear-gradient(90deg, transparent, ${color}66, transparent)`,
-          margin: '0 auto 36px',
+          margin: '0 auto 20px',
         }} />
 
-        {/* Overview */}
+        {/* Overview — 截断 */}
         <div style={{
-          padding: '24px 28px', borderRadius: 16,
+          padding: '14px 20px', borderRadius: 14,
           background: 'rgba(255,255,255,0.025)',
           border: '1px solid rgba(255,255,255,0.05)',
-          marginBottom: 32,
+          marginBottom: 18,
         }}>
-          <p style={{ fontSize: 16, lineHeight: 1.9, color: '#c8c8da', margin: 0 }}>
-            {type.overview}
+          <p style={{ fontSize: 15, lineHeight: 1.8, color: '#c8c8da', margin: 0 }}>
+            {overview}
           </p>
         </div>
 
-        {/* Dimensions */}
-        <div style={{ marginBottom: 32 }}>
-          <p style={{
-            fontSize: 11, fontWeight: 600, letterSpacing: '0.14em',
-            color: '#74748e', textTransform: 'uppercase' as const, marginBottom: 20,
-          }}>
-            DIMENSIONS
-          </p>
+        {/* Dimensions — 紧凑 */}
+        <div style={{ marginBottom: 18 }}>
           {dimensions.map((dim) => {
             const score = scores[dim.id]
             const pct = getPercentage(score)
             const positive = score > 0
             return (
-              <div key={dim.id} style={{ marginBottom: 18 }}>
+              <div key={dim.id} style={{ marginBottom: 10 }}>
                 <div style={{
                   display: 'flex', justifyContent: 'space-between',
-                  fontSize: 14, color: '#9898b0', marginBottom: 6, fontWeight: 500,
+                  fontSize: 13, color: '#9898b0', marginBottom: 4, fontWeight: 500,
                 }}>
                   <span>{dim.labelB}</span>
-                  <span style={{ letterSpacing: '0.06em', color: '#74748e', fontSize: 12 }}>{dim.name}</span>
+                  <span style={{ letterSpacing: '0.06em', color: '#74748e', fontSize: 11 }}>{dim.name}</span>
                   <span>{dim.labelA}</span>
                 </div>
                 <div style={{
-                  height: 8, borderRadius: 4,
+                  height: 7, borderRadius: 4,
                   background: 'rgba(255,255,255,0.04)', display: 'flex',
                 }}>
                   <div style={{ width: '50%', display: 'flex', justifyContent: 'flex-end' }}>
@@ -144,50 +139,49 @@ const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({ type, scores, di
           })}
         </div>
 
-        {/* Soul question */}
+        {/* Soul question — 紧凑 */}
         <div style={{
-          padding: '24px 28px', borderRadius: 16,
+          padding: '14px 20px', borderRadius: 14,
           background: `linear-gradient(135deg, ${color}0c, transparent 60%)`,
           border: `1px solid ${color}1a`,
-          textAlign: 'center', marginBottom: 28,
+          textAlign: 'center', marginBottom: 16,
         }}>
-          <p style={{ fontSize: 12, color: '#74748e', letterSpacing: '0.12em', fontWeight: 600, margin: '0 0 14px' }}>
-            💭 SOUL QUESTION
-          </p>
           <p style={{
-            fontSize: 18, fontStyle: 'italic', color: '#e4e4ee',
-            lineHeight: 1.75, margin: 0,
+            fontSize: 16, fontStyle: 'italic', color: '#e4e4ee',
+            lineHeight: 1.7, margin: 0,
           }}>
-            &ldquo;{type.soulQuestion}&rdquo;
+            💭 &ldquo;{type.soulQuestion}&rdquo;
           </p>
         </div>
 
-        {/* Match */}
-        <div style={{ display: 'flex', gap: 16, marginBottom: 32 }}>
+        {/* Match — 单行紧凑 */}
+        <div style={{ display: 'flex', gap: 12, marginBottom: 20 }}>
           <div style={{
-            flex: 1, padding: '18px 20px', borderRadius: 14,
+            flex: 1, padding: '12px 14px', borderRadius: 12,
             background: 'rgba(52,211,153,0.04)',
             border: '1px solid rgba(52,211,153,0.1)',
             textAlign: 'center',
           }}>
-            <p style={{ fontSize: 12, color: '#34d399', fontWeight: 600, margin: '0 0 8px', letterSpacing: '0.06em' }}>💚 BEST</p>
-            <p style={{ fontSize: 17, color: '#d8d8e8', fontWeight: 600, margin: 0 }}>{type.bestMatch}</p>
+            <p style={{ fontSize: 15, color: '#d8d8e8', fontWeight: 600, margin: 0 }}>
+              <span style={{ color: '#34d399', fontSize: 12, marginRight: 6 }}>💚</span>{type.bestMatch}
+            </p>
           </div>
           <div style={{
-            flex: 1, padding: '18px 20px', borderRadius: 14,
+            flex: 1, padding: '12px 14px', borderRadius: 12,
             background: 'rgba(248,113,113,0.04)',
             border: '1px solid rgba(248,113,113,0.1)',
             textAlign: 'center',
           }}>
-            <p style={{ fontSize: 12, color: '#f87171', fontWeight: 600, margin: '0 0 8px', letterSpacing: '0.06em' }}>💔 WORST</p>
-            <p style={{ fontSize: 17, color: '#d8d8e8', fontWeight: 600, margin: 0 }}>{type.worstMatch}</p>
+            <p style={{ fontSize: 15, color: '#d8d8e8', fontWeight: 600, margin: 0 }}>
+              <span style={{ color: '#f87171', fontSize: 12, marginRight: 6 }}>💔</span>{type.worstMatch}
+            </p>
           </div>
         </div>
 
         {/* Footer */}
         <div style={{
           textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)',
-          paddingTop: 20,
+          paddingTop: 14,
         }}>
           <p style={{ fontSize: 13, color: '#5a5a74', margin: 0, letterSpacing: '0.06em' }}>
             dbbti.silentsparkhub.com
