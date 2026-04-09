@@ -40,7 +40,7 @@ const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({ type, scores, di
         </div>
 
         <div style={{
-          width: 240, height: 240, borderRadius: 32, overflow: 'hidden',
+          width: 320, height: 320, borderRadius: 36, overflow: 'hidden',
           border: `3px solid ${color}44`,
           boxShadow: `0 12px 60px ${color}28, 0 0 120px ${color}12`,
           marginTop: 24,
