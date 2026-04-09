@@ -23,7 +23,10 @@ const fadeUp = {
 }
 
 function HiddenCodeCycle() {
-  const codes = ['疯牛卷毒', '丧恐躺甜', '疯恐卷甜', '丧牛躺毒', '疯牛躺甜', '丧恐卷毒', '？？？？']
+  const { lang } = useLang()
+  const codes = lang === 'zh'
+    ? ['疯牛卷毒', '丧恐躺甜', '疯恐卷甜', '丧牛躺毒', '疯牛躺甜', '丧恐卷毒', '？？？？']
+    : ['MBGT', 'DACS', 'MAGS', 'DBCT', 'MBCS', 'DAGT', '????']
   const [idx, setIdx] = useState(0)
   useEffect(() => {
     const t = setInterval(() => setIdx((i) => (i + 1) % codes.length), 280)
