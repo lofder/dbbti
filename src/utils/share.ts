@@ -12,7 +12,7 @@ export async function downloadShareCard(
   try {
     const dataUrl = await toPng(element, {
       quality: 0.95,
-      pixelRatio: 2,
+      pixelRatio: 3,
       backgroundColor: '#0a0a0f',
     })
 
