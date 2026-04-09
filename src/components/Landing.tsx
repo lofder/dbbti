@@ -46,7 +46,7 @@ function AboutSection() {
         <p style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--color-text-4)', letterSpacing: '0.1em', marginBottom: 10 }}>
           {t.aboutTitle}
         </p>
-        <p style={{ fontSize: '0.72rem', lineHeight: 1.85, color: 'var(--color-text-4)', opacity: 0.7 }}>
+        <p style={{ fontSize: '0.72rem', lineHeight: 1.85, color: 'var(--color-text-4)' }}>
           {t.aboutText}
         </p>
         <p style={{ marginTop: 12 }}>
@@ -54,7 +54,7 @@ function AboutSection() {
             href={t.aboutGithub}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ fontSize: '0.72rem', color: 'var(--color-text-3)', textDecoration: 'none', opacity: 0.7 }}
+            style={{ fontSize: '0.72rem', color: 'var(--color-text-3)', textDecoration: 'none' }}
           >
             {t.aboutStar}
           </a>
@@ -64,12 +64,12 @@ function AboutSection() {
             href={t.aboutGithub}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ fontSize: '0.68rem', color: 'var(--color-text-4)', opacity: 0.4, textDecoration: 'underline' }}
+            style={{ fontSize: '0.68rem', color: 'var(--color-text-4)', textDecoration: 'underline' }}
           >
             GitHub
           </a>
         </p>
-        <p style={{ fontSize: '0.68rem', color: 'var(--color-text-4)', opacity: 0.3, marginTop: 12 }}>
+        <p style={{ fontSize: '0.68rem', color: 'var(--color-text-4)', opacity: 0.6, marginTop: 12 }}>
           {t.aboutMadeWith}
         </p>
       </div>

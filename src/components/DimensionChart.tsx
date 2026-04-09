@@ -80,7 +80,7 @@ export default function DimensionChart({ scores, breakdown }: DimensionChartProp
               <span style={{ fontSize: '0.72rem', color: 'var(--color-text-4)' }}>{dim.labelA}</span>
             </div>
 
-            <p style={{ marginTop: '14px', fontSize: '0.88rem', lineHeight: 1.75, color: 'var(--color-text-3)' }}>
+            <p style={{ marginTop: '14px', fontSize: '0.88rem', lineHeight: 1.75, color: 'var(--color-text-2)' }}>
               {breakdown[dim.id]}
             </p>
           </motion.div>

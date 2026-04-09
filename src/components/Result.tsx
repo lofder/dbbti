@@ -198,11 +198,11 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12 }}>
               <Card style={{ borderColor: 'rgba(52,211,153,0.1)' }}>
                 <p style={{ fontSize: '0.72rem', fontWeight: 700, color: '#34d399', marginBottom: 14, letterSpacing: '0.06em' }}>{t.superpowerLabel}</p>
-                <p style={{ fontSize: '0.93rem', lineHeight: 1.75, color: 'var(--color-text-3)' }}>{type.superpower}</p>
+                <p style={{ fontSize: '0.93rem', lineHeight: 1.75, color: 'var(--color-text-2)' }}>{type.superpower}</p>
               </Card>
               <Card style={{ borderColor: 'rgba(248,113,113,0.1)' }}>
                 <p style={{ fontSize: '0.72rem', fontWeight: 700, color: '#f87171', marginBottom: 14, letterSpacing: '0.06em' }}>{t.blindspotLabel}</p>
-                <p style={{ fontSize: '0.93rem', lineHeight: 1.75, color: 'var(--color-text-3)' }}>{type.blindspot}</p>
+                <p style={{ fontSize: '0.93rem', lineHeight: 1.75, color: 'var(--color-text-2)' }}>{type.blindspot}</p>
               </Card>
             </div>
           </motion.section>
@@ -291,7 +291,7 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
               <p style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--color-text-4)', letterSpacing: '0.1em', marginBottom: 10 }}>
                 {t.aboutTitle}
               </p>
-              <p style={{ fontSize: '0.72rem', lineHeight: 1.85, color: 'var(--color-text-4)', opacity: 0.7, maxWidth: 400, margin: '0 auto' }}>
+              <p style={{ fontSize: '0.72rem', lineHeight: 1.85, color: 'var(--color-text-4)', maxWidth: 400, margin: '0 auto' }}>
                 {t.aboutText}
               </p>
               <p style={{ marginTop: 12, textAlign: 'center' }}>
@@ -299,7 +299,7 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
                   href={t.aboutGithub}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ fontSize: '0.72rem', color: 'var(--color-text-3)', textDecoration: 'none', opacity: 0.7 }}
+                  style={{ fontSize: '0.72rem', color: 'var(--color-text-3)', textDecoration: 'none' }}
                 >
                   {t.aboutStar}
                 </a>
@@ -309,12 +309,12 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
                   href={t.aboutGithub}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ fontSize: '0.68rem', color: 'var(--color-text-4)', opacity: 0.4, textDecoration: 'underline' }}
+                  style={{ fontSize: '0.68rem', color: 'var(--color-text-4)', textDecoration: 'underline' }}
                 >
                   GitHub
                 </a>
               </p>
-              <p style={{ fontSize: '0.68rem', color: 'var(--color-text-4)', opacity: 0.3, marginTop: 12 }}>
+              <p style={{ fontSize: '0.68rem', color: 'var(--color-text-4)', opacity: 0.6, marginTop: 12 }}>
                 {t.aboutMadeWith}
               </p>
             </div>

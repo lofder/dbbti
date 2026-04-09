@@ -167,7 +167,7 @@ const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({ type, scores, di
           paddingTop: 14,
         }}>
           <p style={{ fontSize: 9.5, color: '#44445a', margin: 0, letterSpacing: '0.04em' }}>
-            dbbti.pages.dev
+            dbbti.silentsparkhub.com
           </p>
         </div>
       </div>
