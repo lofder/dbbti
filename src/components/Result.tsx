@@ -5,8 +5,7 @@ import type { DimensionScores } from '../utils/calculate'
 import TypeIllustration from './TypeIllustration'
 import DimensionChart from './DimensionChart'
 import ShareCard from './ShareCard'
-import { downloadShareCard, preRenderShareCard } from '../utils/share'
-import type { ShareStatus } from '../utils/share'
+import { generateShareImage, preRenderShareCard } from '../utils/share'
 import { useLocalizedType, useT, useDimensions } from '../i18n/useGameData'
 import { useLang } from '../i18n/context'
 
@@ -63,14 +62,6 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
   return <div className="glass-card" style={{ padding: 'clamp(22px, 4vw, 30px)', ...style }}>{children}</div>
 }
 
-const TOAST_MESSAGES: Record<ShareStatus, Record<'zh' | 'en', string>> = {
-  shared: { zh: '图片已发送至 App', en: 'Image sent to app' },
-  cancelled: { zh: '', en: '' },
-  saved: { zh: '已保存到下载 ✓', en: 'Saved to downloads ✓' },
-  opened: { zh: '图片已打开，长按可保存', en: 'Image opened — long press to save' },
-  error: { zh: '保存失败，请截图保存', en: 'Save failed — try a screenshot instead' },
-}
-
 export default function Result({ typeId, scores, onRestart }: ResultProps) {
   const type = useLocalizedType(typeId)
   const t = useT()
@@ -78,7 +69,7 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
   const dims = useDimensions()
   const shareRef = useRef<HTMLDivElement>(null)
   const [saving, setSaving] = useState(false)
-  const [toast, setToast] = useState<string | null>(null)
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null)
 
   const color = type?.isHidden ? '#c084fc' : (type?.color ?? '#f59e0b')
 
@@ -96,18 +87,12 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
     return () => clearTimeout(t)
   }, [typeId])
 
-  const showToast = (msg: string) => {
-    setToast(msg)
-    setTimeout(() => setToast(null), 4000)
-  }
-
   const handleSave = async () => {
     if (!shareRef.current || saving) return
     setSaving(true)
-    const status = await downloadShareCard(shareRef.current, `dbbti-${typeId}.jpg`)
+    const url = await generateShareImage(shareRef.current)
     setSaving(false)
-    const msg = TOAST_MESSAGES[status][lang]
-    if (msg) showToast(msg)
+    if (url) setPreviewUrl(url)
   }
 
   if (!type) return null
@@ -352,22 +337,51 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
         <ShareCard ref={shareRef} type={type} scores={scores} dimensions={dims} />
       </div>
 
-      {toast && (
+      {previewUrl && (
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           style={{
-            position: 'fixed', bottom: 40, left: '50%', transform: 'translateX(-50%)',
-            zIndex: 200, padding: '12px 24px', borderRadius: 14,
-            background: 'rgba(20,20,30,0.92)', backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255,255,255,0.08)',
-            color: '#eeeef0', fontSize: '0.88rem', fontWeight: 500,
-            boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
-            whiteSpace: 'nowrap',
+            position: 'fixed', inset: 0, zIndex: 300,
+            background: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(8px)',
+            display: 'flex', flexDirection: 'column', alignItems: 'center',
+            padding: '20px 16px', overflowY: 'auto', WebkitOverflowScrolling: 'touch',
           }}
+          onClick={() => setPreviewUrl(null)}
         >
-          {toast}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{ width: '100%', maxWidth: 380, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}
+          >
+            <p style={{
+              fontSize: '0.82rem', color: 'rgba(255,255,255,0.7)', textAlign: 'center',
+              marginTop: 8,
+            }}>
+              {lang === 'zh' ? '长按图片保存，然后分享给好友' : 'Long press to save, then share with friends'}
+            </p>
+
+            <img
+              src={previewUrl}
+              alt="DBBTI Result"
+              style={{
+                width: '100%', borderRadius: 12,
+                boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
+              }}
+            />
+
+            <button
+              onClick={() => setPreviewUrl(null)}
+              style={{
+                marginTop: 4, padding: '10px 32px', borderRadius: 12,
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', fontWeight: 500,
+                cursor: 'pointer',
+              }}
+            >
+              {lang === 'zh' ? '关闭' : 'Close'}
+            </button>
+          </div>
         </motion.div>
       )}
     </motion.div>
