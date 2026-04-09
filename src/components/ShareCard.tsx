@@ -39,19 +39,63 @@ const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({ type, scores, di
           DBBTI · Dumbass Big Brain Type Indicator
         </div>
 
-        <div style={{
-          width: 320, height: 320, borderRadius: 36, overflow: 'hidden',
-          border: `3px solid ${color}44`,
-          boxShadow: `0 12px 60px ${color}28, 0 0 120px ${color}12`,
-          marginTop: 24,
-        }}>
-          <img
-            src={type.image}
-            alt={type.title}
-            crossOrigin="anonymous"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-        </div>
+        {type.isHidden ? (
+          <div style={{ position: 'relative', width: 320, height: 320, marginTop: 24 }}>
+            <div style={{
+              position: 'absolute', inset: -4, borderRadius: 40,
+              background: 'linear-gradient(135deg, #a855f7, #60a5fa, #f472b6, #fb923c, #34d399, #a855f7)',
+              opacity: 0.55,
+              filter: 'blur(2px)',
+            }} />
+            <div style={{
+              position: 'absolute', inset: -14, borderRadius: 46,
+              border: '1px solid rgba(168,85,247,0.12)',
+            }} />
+            <div style={{
+              position: 'absolute', inset: -28, borderRadius: 52,
+              border: '1px solid rgba(168,85,247,0.06)',
+            }} />
+            <div style={{
+              position: 'relative', width: '100%', height: '100%',
+              borderRadius: 36, overflow: 'hidden', background: '#0a0a14',
+            }}>
+              <img
+                src={type.image}
+                alt={type.title}
+                crossOrigin="anonymous"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+              <div style={{
+                position: 'absolute', inset: 0,
+                background: 'linear-gradient(135deg, rgba(168,85,247,0.1), rgba(96,165,250,0.08), rgba(244,114,182,0.1))',
+                mixBlendMode: 'overlay',
+              }} />
+            </div>
+            <div style={{
+              position: 'absolute', bottom: -16, left: '50%', transform: 'translateX(-50%)',
+              fontSize: 11, fontWeight: 700, letterSpacing: '0.25em',
+              padding: '4px 16px', borderRadius: 20,
+              background: 'linear-gradient(135deg, #a855f7, #60a5fa, #f472b6, #fb923c, #34d399)',
+              color: '#0a0a14',
+            }}>
+              HIDDEN
+            </div>
+          </div>
+        ) : (
+          <div style={{
+            width: 320, height: 320, borderRadius: 36, overflow: 'hidden',
+            border: `3px solid ${color}44`,
+            boxShadow: `0 12px 60px ${color}28, 0 0 120px ${color}12`,
+            marginTop: 24,
+          }}>
+            <img
+              src={type.image}
+              alt={type.title}
+              crossOrigin="anonymous"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </div>
+        )}
 
         <h2 style={{
           fontSize: 46, fontWeight: 800, margin: '32px 0 0',
