@@ -1,24 +1,29 @@
-import { toPng } from 'html-to-image'
+import { toJpeg } from 'html-to-image'
 
 function isIOS(): boolean {
   return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
 }
 
+const RENDER_OPTS = {
+  quality: 0.92,
+  pixelRatio: 2,
+  backgroundColor: '#0a0a0f',
+  cacheBust: true,
+}
+
 export async function downloadShareCard(
   element: HTMLElement,
-  filename: string = 'dbbti-result.png',
+  filename: string = 'dbbti-result.jpg',
 ): Promise<boolean> {
   try {
-    const dataUrl = await toPng(element, {
-      quality: 0.95,
-      pixelRatio: 3,
-      backgroundColor: '#0a0a0f',
-    })
+    await toJpeg(element, RENDER_OPTS).catch(() => {})
+    await new Promise((r) => setTimeout(r, 300))
+    const dataUrl = await toJpeg(element, RENDER_OPTS)
 
     const res = await fetch(dataUrl)
     const blob = await res.blob()
-    const file = new File([blob], filename, { type: 'image/png' })
+    const file = new File([blob], filename, { type: 'image/jpeg' })
 
     if (navigator.canShare?.({ files: [file] })) {
       await navigator.share({ files: [file] })

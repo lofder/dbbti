@@ -80,7 +80,7 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
   const handleSave = async () => {
     if (!shareRef.current || saving) return
     setSaving(true)
-    await downloadShareCard(shareRef.current, `dbbti-${typeId}.png`)
+    await downloadShareCard(shareRef.current, `dbbti-${typeId}.jpg`)
     setSaving(false)
   }
 
