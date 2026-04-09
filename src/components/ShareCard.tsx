@@ -40,19 +40,21 @@ const ShareCard = forwardRef<HTMLDivElement, ShareCardProps>(({ type, scores, di
         </div>
 
         {type.isHidden ? (
-          <div style={{ position: 'relative', width: 320, height: 320, marginTop: 24 }}>
+          <div style={{ position: 'relative', width: 320, height: 320, marginTop: 40, marginBottom: 16 }}>
             <div style={{
-              position: 'absolute', inset: -4, borderRadius: 40,
+              position: 'absolute', inset: -28, borderRadius: 44,
               background: 'linear-gradient(135deg, #a855f7, #60a5fa, #f472b6, #fb923c, #34d399, #a855f7)',
-              opacity: 0.55,
-              filter: 'blur(2px)',
+              backgroundSize: '200% 200%',
+              opacity: 0.5,
+              filter: 'blur(3px)',
+              transform: 'rotate(18deg)',
             }} />
             <div style={{
-              position: 'absolute', inset: -14, borderRadius: 46,
+              position: 'absolute', inset: -18, borderRadius: 48,
               border: '1px solid rgba(168,85,247,0.12)',
             }} />
             <div style={{
-              position: 'absolute', inset: -28, borderRadius: 52,
+              position: 'absolute', inset: -34, borderRadius: 54,
               border: '1px solid rgba(168,85,247,0.06)',
             }} />
             <div style={{
