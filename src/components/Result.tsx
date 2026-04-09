@@ -6,7 +6,9 @@ import TypeIllustration from './TypeIllustration'
 import DimensionChart from './DimensionChart'
 import ShareCard from './ShareCard'
 import { downloadShareCard } from '../utils/share'
+import type { ShareStatus } from '../utils/share'
 import { useLocalizedType, useT, useDimensions } from '../i18n/useGameData'
+import { useLang } from '../i18n/context'
 
 interface ResultProps {
   typeId: string
@@ -61,12 +63,21 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
   return <div className="glass-card" style={{ padding: 'clamp(22px, 4vw, 30px)', ...style }}>{children}</div>
 }
 
+const TOAST_MESSAGES: Record<ShareStatus, Record<'zh' | 'en', string>> = {
+  ok: { zh: '分享成功 ✓', en: 'Shared ✓' },
+  saved: { zh: '已保存到下载 ✓', en: 'Saved to downloads ✓' },
+  opened: { zh: '图片已在新窗口打开，长按保存', en: 'Image opened — long press to save' },
+  error: { zh: '保存失败，请截图保存 😢', en: 'Save failed — try a screenshot instead 😢' },
+}
+
 export default function Result({ typeId, scores, onRestart }: ResultProps) {
   const type = useLocalizedType(typeId)
   const t = useT()
+  const { lang } = useLang()
   const dims = useDimensions()
   const shareRef = useRef<HTMLDivElement>(null)
   const [saving, setSaving] = useState(false)
+  const [toast, setToast] = useState<string | null>(null)
 
   const color = type?.isHidden ? '#c084fc' : (type?.color ?? '#f59e0b')
 
@@ -77,11 +88,17 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
     return () => clearTimeout(timer)
   }, [])
 
+  const showToast = (msg: string) => {
+    setToast(msg)
+    setTimeout(() => setToast(null), 4000)
+  }
+
   const handleSave = async () => {
     if (!shareRef.current || saving) return
     setSaving(true)
-    await downloadShareCard(shareRef.current, `dbbti-${typeId}.jpg`)
+    const status = await downloadShareCard(shareRef.current, `dbbti-${typeId}.jpg`)
     setSaving(false)
+    showToast(TOAST_MESSAGES[status][lang])
   }
 
   if (!type) return null
@@ -325,6 +342,25 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
       <div style={{ position: 'fixed', left: -9999, top: -9999 }}>
         <ShareCard ref={shareRef} type={type} scores={scores} dimensions={dims} />
       </div>
+
+      {toast && (
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 40 }}
+          style={{
+            position: 'fixed', bottom: 40, left: '50%', transform: 'translateX(-50%)',
+            zIndex: 200, padding: '12px 24px', borderRadius: 14,
+            background: 'rgba(20,20,30,0.92)', backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            color: '#eeeef0', fontSize: '0.88rem', fontWeight: 500,
+            boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {toast}
+        </motion.div>
+      )}
     </motion.div>
   )
 }

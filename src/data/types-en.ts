@@ -3,7 +3,7 @@ import type { PersonalityType } from './types'
 export const personalityTypesEn: PersonalityType[] = [
   {
     id: 'crazy-social-grind-toxic',
-    code: '疯牛卷毒',
+    code: 'MBGT',
     title: 'Nuclear Savage',
     tagline: 'The whole world is your battlefield — including the lunch queue',
     overview: 'You\'re that little sun in the crowd that could detonate any second — limitless energy, max-level social skills, grinding insanely hard, and your words cut like a scalpel. While others are slacking, you\'re grinding. While others are grinding, you\'ve already finished and started roasting them. Your feed is a never-ending saga of "crushed another thing today," and your chat history is a greatest hits of savage one-liners. But here\'s the thing — you never stop, not because you love winning, but because you\'ve never allowed yourself to lose. Those 3 AM sessions? You\'re not afraid of falling behind — you\'re afraid your anxiety will catch up.',
@@ -30,7 +30,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'crazy-social-grind-sweet',
-    code: '疯牛卷甜',
+    code: 'MBGS',
     title: 'Hustle Sweetheart',
     tagline: 'The hardest grinder is also the sweetest — impossible to hate',
     overview: 'You\'re that miraculous being who grinds insanely hard while sending everyone cheerful stickers. Boundless energy, max social skills, working yourself to the bone — yet impossibly sweet about it. You\'re the most enthusiastic at team events and the one replying "sure thing~" at 3 AM. But here\'s the secret: you\'re so nice to everyone because you\'ve turned "being liked" into another KPI. Your sweetness is real. Your exhaustion is real too — you just never let anyone see the second part.',
@@ -57,7 +57,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'crazy-social-rest-toxic',
-    code: '疯牛躺毒',
+    code: 'MBCT',
     title: 'Happy Troll',
     tagline: 'Does nothing productive but maxed-out social skills — professional companion with poison',
     overview: 'You\'re the rare specimen who channels all energy into socializing and roasting — vibrant, friends everywhere, but the moment work comes up, you switch to full chill mode. Friends call you a "walking meme machine"; your boss calls you "most active in meetings, most absent in actual work." You always drop the most accurate truth bombs at the worst possible timing, then defuse the tension with a smirk. Behind that laughing, roasting exterior hides a brilliant soul that chose not to try too hard. You\'re not incapable of grinding — you\'re too lucid, lucid enough to realize most things aren\'t worth the grind.',
@@ -84,7 +84,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'crazy-social-rest-sweet',
-    code: '疯牛躺甜',
+    code: 'MBCS',
     title: 'Social Butterfly',
     tagline: 'Flying everywhere but never landing for actual work',
     overview: 'You\'re the warmest presence in every friend group — energetic, social, sweet as honey, but the moment work comes up, you turn into a marshmallow that can\'t get anything done. Your life motto is "being happy is all that matters." Your calendar is packed with hangouts, dinners, and video calls, with barely any room for "making money" or "self-improvement." Like a happy butterfly fluttering everywhere, leaving sweet traces behind. But have you considered that your non-stop socializing isn\'t just from loving people — maybe it\'s because you don\'t know what to do with yourself when you\'re alone?',
@@ -111,7 +111,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'crazy-anxious-grind-toxic',
-    code: '疯恐卷毒',
+    code: 'MAGT',
     title: 'Shadow Grinder',
     tagline: 'Quietly outgrinds everyone in a corner then plays innocent',
     overview: 'You\'re the most dangerous type — burning fire inside, ice-cold outside. Too introverted to say an extra word, but secretly you\'ve already checked everyone\'s progress and silently surpassed them. Your savage side isn\'t spoken — it\'s journaled, typed, and hidden in your glances. Your inner monologue is richer than anyone\'s — disdaining the showy grinders and pitying the quitters alike. Truth is, you work harder than anyone. You just never let people see you try — because that would be uncool.',
@@ -138,7 +138,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'crazy-anxious-grind-sweet',
-    code: '疯恐卷甜',
+    code: 'MAGS',
     title: 'Silent Overachiever',
     tagline: 'Harmless exterior hiding an insane grind engine',
     overview: 'The ultimate plot twist — quiet and unassuming on the surface, secretly grinding harder than everyone combined. You need three deep breaths before ordering a coffee, but you reply to work messages instantly with a smiley face. You can\'t speak up in meetings, but silently submit a flawless proposal that leaves everyone speechless. You\'re the person who says "I didn\'t study" then scores first — except it\'s not an act. You genuinely believe your effort doesn\'t count for much. And that\'s exactly what makes you heartbreaking.',
@@ -165,7 +165,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'crazy-anxious-rest-toxic',
-    code: '疯恐躺毒',
+    code: 'MACT',
     title: 'Keyboard Warrior',
     tagline: 'Silent IRL, opinion leader online',
     overview: 'You\'re the internet\'s lightning bolt — razor-sharp, eloquent, devastating behind a screen, but an instant introvert offline. Your online presence is ten thousand times more interesting than your real self. You can lie in bed arguing in forums until someone rage-quits, while not having the energy to go grocery shopping. Your mind is a volcano, but reality sealed the crater — so all the magma erupts through the internet. But have you considered that the keyboard gives you not just protection, but also a widening gap between you and the real world?',
@@ -192,7 +192,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'crazy-anxious-rest-sweet',
-    code: '疯恐躺甜',
+    code: 'MACS',
     title: 'Anime Hermit',
     tagline: 'Blooming wildly in your own world — visitors not welcome',
     overview: 'Your soul lives in another dimension — with its own universe, rules, and joy. In reality you\'re almost transparent, but once you enter your domain (gaming / fandom / creating / whatever), you\'re more passionate, more invested, more warm than anyone. You\'re devastatingly sweet to close ones and terrified of strangers. You don\'t dislike socializing — you just don\'t want to expose your true self in unsafe environments. Your world isn\'t big, but it\'s marvelous. The problem? Sometimes you lock yourself inside that marvelous little world for too long.',
@@ -219,7 +219,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'flat-social-grind-toxic',
-    code: '丧牛卷毒',
+    code: 'DBGT',
     title: 'Walking Wounded',
     tagline: 'Depressed yet grinding, social yet savage — already cracking apart',
     overview: 'You\'re the most authentic portrait of the modern worker — feeling life is meaningless while working yourself to death, saying "whatever" while secretly competing with everyone. Your social skills are online but joyless; your execution is online but resentful. You\'re the person who\'s crystal clear in meetings but sighs the moment it ends; "positive vibes" on your feed, "want to die" in DMs. Your savage side comes from disappointment after seeing through life — you\'re too lucid, so lucid you can\'t even numb yourself. So you chose the hardest path: grinding forward with clear-eyed despair.',
@@ -246,7 +246,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'flat-social-grind-sweet',
-    code: '丧牛卷甜',
+    code: 'DBGS',
     title: 'Office Pushover',
     tagline: 'Soul has left the body but the smile never drops',
     overview: 'You\'re that person in the office who always smiles and says "sure, no problem" — soul sunk to the Mariana Trench, face-smile never offline. Your social skills and work ethic are both online, but happiness went offline long ago. You\'re the one the boss trusts most, colleagues depend on most, friends rely on most — but nobody knows how empty you feel when you take off the smile at home. You\'ve made "being needed" your reason to keep going, and "not being a bother" your life rule. You\'re not incapable of anger — you just think anger is too much of a luxury.',
@@ -273,7 +273,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'flat-social-rest-toxic',
-    code: '丧牛躺毒',
+    code: 'DBCT',
     title: 'Savage Socialite',
     tagline: 'Chills at maximum but still goes out — to roast people',
     overview: 'You\'re the most complex person in the friend group — loves socializing but not effort, savage-tongued but popular, looks depressed but shows up to every event. You have a peculiar charm: brutal honesty, yet people love being roasted by you. You chill hard — zero career ambition, but unlimited passion for socializing and commentary. You consider truth-telling a social gift; in your view, NOT being honest is the disrespect. But sometimes too much truth becomes a weapon — even when you mean no harm.',
@@ -300,7 +300,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'flat-social-rest-sweet',
-    code: '丧牛躺甜',
+    code: 'DBCS',
     title: 'Zen Teddy Bear',
     tagline: 'Wants nothing, does nothing, yet radiates warmth — a human sedative',
     overview: 'You\'re like a warm cup of milk tea — not intense, not stimulating, but warming from palm to heart. You\'re too depressed to hustle, but your gentleness is a breeze for everyone around you. You\'re your friends\' "mobile power bank" — anyone feeling low spends time with you and recharges to full. No big ambitions, no burning desires — you just want a quiet little life, being nice to the people around you. Sounds "unambitious"? But in a world where everyone is desperately grinding, your zen is itself a gentle rebellion.',
@@ -327,7 +327,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'flat-anxious-grind-toxic',
-    code: '丧恐卷毒',
+    code: 'DAGT',
     title: 'Shadow Hustler',
     tagline: 'The internet\'s most depressed hard worker — grinds self, then grinds the planet',
     overview: 'You\'re a paradoxical black hole — finding everything meaningless yet unable to stop grinding. Introverted, depressed, savage, but still hustling. Like a joyless robot, day after day completing tasks, exceeding targets, roasting leadership, then going home to be depressed. You\'re not happy — but can\'t stop. You\'ve pushed away almost everyone with your depression + savagery + introversion triple combo. But here\'s why you can\'t stop: you\'re using "being useful" to prove your existence — because deep down, you\'re not sure if "just being yourself" is good enough.',
@@ -354,7 +354,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'flat-anxious-grind-sweet',
-    code: '丧恐卷甜',
+    code: 'DAGS',
     title: 'Invisible Wallflower',
     tagline: 'Works hard in silence, never shows off — the world owes you a hug',
     overview: 'You\'re the most heartbreaking type — quiet, hardworking, kind, introverted, and depressed. Every day you silently do your thing, bothering no one, expecting nothing. Your work is always done well, your attitude always gentle — but your inner monologue is a sad little song nobody hears. You don\'t not want to be seen — you just feel you don\'t deserve it. You don\'t not want to be loved — you\'re just afraid you\'re not good enough. You\'re the easiest person to overlook in a crowd — and the one who needs a hug the most.',
@@ -381,7 +381,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'flat-anxious-rest-toxic',
-    code: '丧恐躺毒',
+    code: 'DACT',
     title: 'Modern Nihilist',
     tagline: 'So depressed it became clarity — every word is raw truth',
     overview: 'You\'re the internet\'s most lucid voice — depressed, anxious, chill, savage. Four debuffs stacked, yet you have eyes that see through everything. Like a philosopher curled up in a corner, not participating in the world\'s noise, but dropping occasional one-liners that stun the room. Immune to all "positive vibes," dismissive of all "success mantras" — not from jealousy, but because you see the emptiness behind those filters better than anyone. Your pessimism isn\'t melodrama — it\'s radical honesty. You simply refuse to lie to yourself.',
@@ -408,7 +408,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'flat-anxious-rest-sweet',
-    code: '丧恐躺甜',
+    code: 'DACS',
     title: 'Harmless Potato',
     tagline: 'The most harmless creature on Earth — pet at your own risk (of heart melt)',
     overview: 'You\'re like a cat napping in a corner — never bothering anyone, but if someone walks over and pets you, you\'ll purr the sweetest purr. Too depressed to move, too anxious to speak, too chill to get up — but inside you lives the softest heart. You\'re the person who ends every text with "~", who silently likes posts but never comments, who makes people smile when they suddenly think of you. You think you\'re useless — but have you considered that in a world where everyone\'s trampling each other to get ahead, an existence that "doesn\'t compete, doesn\'t fight, and doesn\'t hurt anyone" is itself something extraordinary?',
@@ -435,7 +435,7 @@ export const personalityTypesEn: PersonalityType[] = [
   },
   {
     id: 'schrodinger',
-    code: '？？？？',
+    code: '????',
     title: 'Schrödinger\'s Dumbass',
     tagline: 'You don\'t lack personality — you have ALL personalities simultaneously',
     overview: 'Congratulations, you\'ve unlocked the hidden personality — meaning you showed no strong leaning on any of the four dimensions. Not manic or depressed, not extro or intro, not grind or chill, not savage or sweet — or rather, you\'re all of them at once. Like Schrödinger\'s cat, you exist in every state simultaneously until the box is opened. This isn\'t "no personality" — quite the opposite. It means your personality elasticity is extremely high, able to shift into different selves across different contexts, relationships, and moods. In psychology, this is called the "contextual self" — you\'re not one fixed person; you\'re a flowing soul. The question is: beneath all those roles, who is the real you?',
