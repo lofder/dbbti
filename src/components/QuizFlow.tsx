@@ -135,7 +135,7 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
                 </h2>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10, paddingLeft: 46 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {opts.map((opt, i) => {
                   const selected = answers[q.id] === opt.value
                   const isNeutral = opt.value === 0

@@ -154,7 +154,7 @@ export default function Landing({ onStart }: LandingProps) {
           transition={{ delay: 1.15, duration: 0.5 }}
           style={{ marginTop: 52 }}
         >
-          <button onClick={onStart} className="btn-primary" style={{ fontSize: '1.05rem', padding: '16px 48px' }}>
+          <button onClick={onStart} className="btn-primary" style={{ fontSize: '1.15rem', padding: '20px 64px' }}>
             {t.startBtn}
           </button>
         </motion.div>
