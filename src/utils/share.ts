@@ -1,6 +1,6 @@
 import { toCanvas } from 'html-to-image'
 
-export type ShareStatus = 'ok' | 'saved' | 'opened' | 'error'
+export type ShareStatus = 'shared' | 'cancelled' | 'saved' | 'opened' | 'error'
 
 const RENDER_OPTS = {
   pixelRatio: 2,
@@ -32,15 +32,12 @@ export async function preRenderShareCard(element: HTMLElement): Promise<void> {
 }
 
 async function getBlob(element: HTMLElement): Promise<Blob> {
-  if (_cachedBlob) {
-    const blob = _cachedBlob
-    _cachedBlob = null
-    return blob
-  }
+  if (_cachedBlob) return _cachedBlob
   await toCanvas(element, RENDER_OPTS).catch(() => {})
   await new Promise((r) => setTimeout(r, 500))
   const canvas = await toCanvas(element, RENDER_OPTS)
-  return canvasToBlob(canvas)
+  _cachedBlob = await canvasToBlob(canvas)
+  return _cachedBlob
 }
 
 function downloadBlob(blob: Blob, filename: string) {
@@ -49,7 +46,7 @@ function downloadBlob(blob: Blob, filename: string) {
   link.download = filename
   link.href = url
   link.click()
-  setTimeout(() => URL.revokeObjectURL(url), 60000)
+  setTimeout(() => URL.revokeObjectURL(url), 120000)
 }
 
 export async function downloadShareCard(
@@ -68,14 +65,11 @@ export async function downloadShareCard(
 
   try {
     if (navigator.canShare?.({ files: [file] })) {
-      await navigator.share({
-        files: [file],
-        title: 'DBBTI Result',
-      })
-      return 'ok'
+      await navigator.share({ files: [file], title: 'DBBTI Result' })
+      return 'shared'
     }
   } catch (err) {
-    if (err instanceof Error && err.name === 'AbortError') return 'ok'
+    if (err instanceof Error && err.name === 'AbortError') return 'cancelled'
   }
 
   try {

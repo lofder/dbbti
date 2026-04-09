@@ -64,10 +64,11 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
 }
 
 const TOAST_MESSAGES: Record<ShareStatus, Record<'zh' | 'en', string>> = {
-  ok: { zh: '分享成功 ✓', en: 'Shared ✓' },
+  shared: { zh: '图片已发送至 App', en: 'Image sent to app' },
+  cancelled: { zh: '', en: '' },
   saved: { zh: '已保存到下载 ✓', en: 'Saved to downloads ✓' },
-  opened: { zh: '图片已在新窗口打开，长按保存', en: 'Image opened — long press to save' },
-  error: { zh: '保存失败，请截图保存 😢', en: 'Save failed — try a screenshot instead 😢' },
+  opened: { zh: '图片已打开，长按可保存', en: 'Image opened — long press to save' },
+  error: { zh: '保存失败，请截图保存', en: 'Save failed — try a screenshot instead' },
 }
 
 export default function Result({ typeId, scores, onRestart }: ResultProps) {
@@ -104,9 +105,9 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
     if (!shareRef.current || saving) return
     setSaving(true)
     const status = await downloadShareCard(shareRef.current, `dbbti-${typeId}.jpg`)
-    await new Promise((r) => setTimeout(r, 800))
     setSaving(false)
-    if (status !== 'ok') showToast(TOAST_MESSAGES[status][lang])
+    const msg = TOAST_MESSAGES[status][lang]
+    if (msg) showToast(msg)
   }
 
   if (!type) return null
