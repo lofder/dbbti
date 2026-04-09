@@ -5,7 +5,7 @@ import type { DimensionScores } from '../utils/calculate'
 import TypeIllustration from './TypeIllustration'
 import DimensionChart from './DimensionChart'
 import ShareCard from './ShareCard'
-import { downloadShareCard } from '../utils/share'
+import { downloadShareCard, preRenderShareCard } from '../utils/share'
 import type { ShareStatus } from '../utils/share'
 import { useLocalizedType, useT, useDimensions } from '../i18n/useGameData'
 import { useLang } from '../i18n/context'
@@ -88,6 +88,13 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
     return () => clearTimeout(timer)
   }, [])
 
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (shareRef.current) preRenderShareCard(shareRef.current)
+    }, 2000)
+    return () => clearTimeout(t)
+  }, [typeId])
+
   const showToast = (msg: string) => {
     setToast(msg)
     setTimeout(() => setToast(null), 4000)
@@ -97,8 +104,9 @@ export default function Result({ typeId, scores, onRestart }: ResultProps) {
     if (!shareRef.current || saving) return
     setSaving(true)
     const status = await downloadShareCard(shareRef.current, `dbbti-${typeId}.jpg`)
+    await new Promise((r) => setTimeout(r, 800))
     setSaving(false)
-    showToast(TOAST_MESSAGES[status][lang])
+    if (status !== 'ok') showToast(TOAST_MESSAGES[status][lang])
   }
 
   if (!type) return null
