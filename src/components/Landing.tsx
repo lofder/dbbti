@@ -27,55 +27,6 @@ function LangToggle() {
   )
 }
 
-function AboutSection() {
-  const t = useT()
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 2, duration: 0.6 }}
-      style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0,
-        textAlign: 'center', padding: '40px 24px 32px',
-      }}
-    >
-      <div style={{
-        maxWidth: 420, margin: '0 auto',
-        borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: 24,
-      }}>
-        <p style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--color-text-4)', letterSpacing: '0.1em', marginBottom: 10 }}>
-          {t.aboutTitle}
-        </p>
-        <p style={{ fontSize: '0.72rem', lineHeight: 1.85, color: 'var(--color-text-4)' }}>
-          {t.aboutText}
-        </p>
-        <p style={{ marginTop: 12 }}>
-          <a
-            href={t.aboutGithub}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontSize: '0.72rem', color: 'var(--color-text-3)', textDecoration: 'none' }}
-          >
-            {t.aboutStar}
-          </a>
-        </p>
-        <p style={{ marginTop: 6 }}>
-          <a
-            href={t.aboutGithub}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontSize: '0.68rem', color: 'var(--color-text-4)', textDecoration: 'underline' }}
-          >
-            GitHub
-          </a>
-        </p>
-        <p style={{ fontSize: '0.68rem', color: 'var(--color-text-4)', opacity: 0.6, marginTop: 12 }}>
-          {t.aboutMadeWith}
-        </p>
-      </div>
-    </motion.div>
-  )
-}
 
 export default function Landing({ onStart }: LandingProps) {
   const t = useT()
@@ -174,7 +125,6 @@ export default function Landing({ onStart }: LandingProps) {
         </motion.p>
       </div>
 
-      <AboutSection />
     </motion.div>
   )
 }
